@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es2022", // Use a modern ES version supported by your Node.js runtime
+    "module": "commonjs", // CommonJS is standard for Node.js backend
+    "outDir": "./dist", // Redirect output structure to a 'dist' folder
+    "rootDir": "./src", // Specify the root directory of source files
+
+    /* Strict Type-Checking Options */
+    "strict": true, // Enable all strict type-checking options for robust code
+    "noImplicitAny": true, // Error on expression with an implicit 'any' type
+    "strictNullChecks": true, // Enable strict null and undefined checks
+    "strictFunctionTypes": true, // Enable strict checking of function types
+    "strictPropertyInitialization": true, // Ensure non-undefined class properties are initialized
+    "noImplicitReturns": true, // Report error when not all code paths return a value
+    "noFallthroughCasesInSwitch": true, // Ensure switch cases do not fall through
+
+    /* Module Resolution Options */
+    "moduleResolution": "node", // Use Node.js module resolution
+    "esModuleInterop": true, // Enables compatibility for importing CommonJS modules as ES modules
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+    "resolveJsonModule": true, // Include modules imported with ".json" extension
+
+    /* Advanced Options */
+    "skipLibCheck": true, // Skip type checking of all declaration files
+    "forceConsistentCasingInFileNames": true, // Ensure that casing is consistent throughout file names
+    "sourceMap": true, // Generate corresponding .map files for debugging
+    "baseUrl": "./", // Base directory to resolve non-relative module names
+    "paths": {
+      // Map module names to locations relative to baseUrl
+      "*": ["node_modules/*", "src/types/*"]
+    }
+  },
+  "include": ["src/**/*"], // Only include files within the 'src' directory
+  "exclude": ["node_modules", "dist"] // Exclude unnecessary files and output directory
+}
