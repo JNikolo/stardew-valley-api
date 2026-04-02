@@ -1,17 +1,17 @@
-import Fastify from "fastify";
+import createServer from "./app";
+import config from "./config";
 
-const server = Fastify({
-  logger: true, // Enable logging for debugging and monitoring
-});
+const startServer = async () => {
+  const server = createServer();
+  const port = config.port;
+  server.listen({ port }, (err: Error | null, address: string) => {
+    if (err) {
+      server.log.error(err);
+      process.exit(1);
+    } else {
+      server.log.info(`Server listening at ${address}`);
+    }
+  });
+};
 
-server.get("/", function (request, reply) {
-  reply.send({ hello: "world" });
-});
-
-server.listen({ port: 3000 }, (err, address) => {
-  if (err) {
-    server.log.error(err);
-    process.exit(1);
-  }
-  server.log.info(`Server listening at ${address}`);
-});
+startServer();
