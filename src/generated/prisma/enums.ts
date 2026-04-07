@@ -9,7 +9,11 @@
 * 🟢 You can import this file directly.
 */
 
+export const Season = {
+  Spring: 'Spring',
+  Summer: 'Summer',
+  Fall: 'Fall',
+  Winter: 'Winter'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type Season = (typeof Season)[keyof typeof Season]

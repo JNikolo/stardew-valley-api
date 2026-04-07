@@ -51,7 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-
+  Character: 'Character'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -68,4 +68,37 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const CharacterScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  birthday_season: 'birthday_season',
+  birthday: 'birthday',
+  lives_in: 'lives_in',
+  address: 'address',
+  can_marriage: 'can_marriage',
+  clinic_visit_season: 'clinic_visit_season',
+  clinic_visit_day: 'clinic_visit_day',
+  loved_gifts: 'loved_gifts',
+  family: 'family'
+} as const
+
+export type CharacterScalarFieldEnum = (typeof CharacterScalarFieldEnum)[keyof typeof CharacterScalarFieldEnum]
+
+
+export const SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+} as const
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const QueryMode = {
+  default: 'default',
+  insensitive: 'insensitive'
+} as const
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 

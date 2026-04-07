@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.7.0",
   "engineVersion": "75cbdc1eb7150937890ad5465d861175c6624711",
   "activeProvider": "postgresql",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Character {\n  id                  Int      @id @default(autoincrement())\n  name                String\n  birthday_season     Season\n  birthday            String\n  lives_in            String\n  address             String\n  can_marriage        Boolean\n  clinic_visit_season Season\n  clinic_visit_day    Int\n  loved_gifts         String[]\n  family              String[]\n}\n\nenum Season {\n  Spring\n  Summer\n  Fall\n  Winter\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -32,10 +32,10 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Character\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"birthday_season\",\"kind\":\"enum\",\"type\":\"Season\"},{\"name\":\"birthday\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"lives_in\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"address\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"can_marriage\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"clinic_visit_season\",\"kind\":\"enum\",\"type\":\"Season\"},{\"name\":\"clinic_visit_day\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"loved_gifts\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"family\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 config.parameterizationSchema = {
-  strings: JSON.parse("[]"),
-  graph: "AAAA"
+  strings: JSON.parse("[\"where\",\"Character.findUnique\",\"Character.findUniqueOrThrow\",\"orderBy\",\"cursor\",\"Character.findFirst\",\"Character.findFirstOrThrow\",\"Character.findMany\",\"data\",\"Character.createOne\",\"Character.createMany\",\"Character.createManyAndReturn\",\"Character.updateOne\",\"Character.updateMany\",\"Character.updateManyAndReturn\",\"create\",\"update\",\"Character.upsertOne\",\"Character.deleteOne\",\"Character.deleteMany\",\"having\",\"_count\",\"_avg\",\"_sum\",\"_min\",\"_max\",\"Character.groupBy\",\"Character.aggregate\",\"AND\",\"OR\",\"NOT\",\"id\",\"name\",\"Season\",\"birthday_season\",\"birthday\",\"lives_in\",\"address\",\"can_marriage\",\"clinic_visit_season\",\"clinic_visit_day\",\"loved_gifts\",\"family\",\"equals\",\"has\",\"hasEvery\",\"hasSome\",\"not\",\"in\",\"notIn\",\"lt\",\"lte\",\"gt\",\"gte\",\"contains\",\"startsWith\",\"endsWith\",\"set\",\"push\",\"increment\",\"decrement\",\"multiply\",\"divide\"]"),
+  graph: "OgsQDhwAACkAMB0AAAQAEB4AACkAMB8CAAAAASABACsAISIAACwiIiMBACsAISQBACsAISUBACsAISYgAC0AIScAACwiIigCACoAISkAAB8AICoAAB8AIAEAAAABACABAAAAAQAgDhwAACkAMB0AAAQAEB4AACkAMB8CACoAISABACsAISIAACwiIiMBACsAISQBACsAISUBACsAISYgAC0AIScAACwiIigCACoAISkAAB8AICoAAB8AIAADAAAABAAgAwAABQAwBAAAAQAgAwAAAAQAIAMAAAUAMAQAAAEAIAMAAAAEACADAAAFADAEAAABACALHwIAAAABIAEAAAABIgAAACICIwEAAAABJAEAAAABJQEAAAABJiAAAAABJwAAACICKAIAAAABKQAAOQAgKgAAOgAgAQgAAAkAIAsfAgAAAAEgAQAAAAEiAAAAIgIjAQAAAAEkAQAAAAElAQAAAAEmIAAAAAEnAAAAIgIoAgAAAAEpAAA5ACAqAAA6ACABCAAACwAwAQgAAAsAMAsfAgA2ACEgAQAzACEiAAA0IiIjAQAzACEkAQAzACElAQAzACEmIAA1ACEnAAA0IiIoAgA2ACEpAAA3ACAqAAA4ACACAAAAAQAgCAAADgAgCx8CADYAISABADMAISIAADQiIiMBADMAISQBADMAISUBADMAISYgADUAIScAADQiIigCADYAISkAADcAICoAADgAIAIAAAAEACAIAAAQACACAAAABAAgCAAAEAAgAwAAAAEAIA8AAAkAIBAAAA4AIAEAAAABACABAAAABAAgBRUAAC4AIBYAAC8AIBcAADIAIBgAADEAIBkAADAAIA4cAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEiAAAdIiIjAQAcACEkAQAcACElAQAcACEmIAAeACEnAAAdIiIoAgAbACEpAAAfACAqAAAfACADAAAABAAgAwAAFgAwFAAAFwAgAwAAAAQAIAMAAAUAMAQAAAEAIA4cAAAaADAdAAAXABAeAAAaADAfAgAbACEgAQAcACEiAAAdIiIjAQAcACEkAQAcACElAQAcACEmIAAeACEnAAAdIiIoAgAbACEpAAAfACAqAAAfACANFQAAIQAgFgAAKAAgFwAAIQAgGAAAIQAgGQAAIQAgKwIAAAABLwIAJwAhMAIAAAAEMQIAAAAEMgIAAAABMwIAAAABNAIAAAABNQIAAAABDhUAACEAIBgAACYAIBkAACYAICsBAAAAAS8BACUAITABAAAABDEBAAAABDIBAAAAATMBAAAAATQBAAAAATUBAAAAATYBAAAAATcBAAAAATgBAAAAAQcVAAAhACAYAAAkACAZAAAkACArAAAAIgIvAAAjIiIwAAAAIggxAAAAIggFFQAAIQAgGAAAIgAgGQAAIgAgKyAAAAABLyAAIAAhBCsBAAAABSwBAAAAAS0BAAAABC4BAAAABAUVAAAhACAYAAAiACAZAAAiACArIAAAAAEvIAAgACEIKwIAAAABLwIAIQAhMAIAAAAEMQIAAAAEMgIAAAABMwIAAAABNAIAAAABNQIAAAABAisgAAAAAS8gACIAIQcVAAAhACAYAAAkACAZAAAkACArAAAAIgIvAAAjIiIwAAAAIggxAAAAIggEKwAAACICLwAAJCIiMAAAACIIMQAAACIIDhUAACEAIBgAACYAIBkAACYAICsBAAAAAS8BACUAITABAAAABDEBAAAABDIBAAAAATMBAAAAATQBAAAAATUBAAAAATYBAAAAATcBAAAAATgBAAAAAQsrAQAAAAEvAQAmACEwAQAAAAQxAQAAAAQyAQAAAAEzAQAAAAE0AQAAAAE1AQAAAAE2AQAAAAE3AQAAAAE4AQAAAAENFQAAIQAgFgAAKAAgFwAAIQAgGAAAIQAgGQAAIQAgKwIAAAABLwIAJwAhMAIAAAAEMQIAAAAEMgIAAAABMwIAAAABNAIAAAABNQIAAAABCCsIAAAAAS8IACgAITAIAAAABDEIAAAABDIIAAAAATMIAAAAATQIAAAAATUIAAAAAQ4cAAApADAdAAAEABAeAAApADAfAgAqACEgAQArACEiAAAsIiIjAQArACEkAQArACElAQArACEmIAAtACEnAAAsIiIoAgAqACEpAAAfACAqAAAfACAIKwIAAAABLwIAIQAhMAIAAAAEMQIAAAAEMgIAAAABMwIAAAABNAIAAAABNQIAAAABCysBAAAAAS8BACYAITABAAAABDEBAAAABDIBAAAAATMBAAAAATQBAAAAATUBAAAAATYBAAAAATcBAAAAATgBAAAAAQQrAAAAIgIvAAAkIiIwAAAAIggxAAAAIggCKyAAAAABLyAAIgAhAAAAAAABOQEAAAABATkAAAAiAgE5IAAAAAEFOQIAAAABOwIAAAABPAIAAAABPQIAAAABPgIAAAABAjkBAAAABDoBAAAABQI5AQAAAAQ6AQAAAAUBOQEAAAAEATkBAAAABAAAAAAFFQAGFgAHFwAIGAAJGQAKAAAAAAAFFQAGFgAHFwAIGAAJGQAKAQIBAgMBBQYBBgcBBwgBCQoBCgwCCw0DDA8BDRECDhIEERMBEhQBExUCGhgFGxkL"
 }
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
@@ -70,8 +70,8 @@ export interface PrismaClientConstructor {
    * const prisma = new PrismaClient({
    *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
    * })
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Characters
+   * const characters = await prisma.character.findMany()
    * ```
    * 
    * Read more in our [docs](https://pris.ly/d/client).
@@ -94,8 +94,8 @@ export interface PrismaClientConstructor {
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Characters
+ * const characters = await prisma.character.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -188,7 +188,15 @@ export interface PrismaClient<
     extArgs: ExtArgs
   }>>
 
-    
+      /**
+   * `prisma.character`: Exposes CRUD operations for the **Character** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Characters
+    * const characters = await prisma.character.findMany()
+    * ```
+    */
+  get character(): Prisma.CharacterDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {
