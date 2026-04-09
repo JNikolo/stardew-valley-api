@@ -22,3 +22,13 @@ export * from './enums.js';
  * 
  */
 export type Character = Prisma.CharacterModel
+/**
+ * Model Relationship
+ * 
+ */
+export type Relationship = Prisma.RelationshipModel
+/**
+ * Model CharacterSchedule
+ * 
+ */
+export type CharacterSchedule = Prisma.CharacterScheduleModel

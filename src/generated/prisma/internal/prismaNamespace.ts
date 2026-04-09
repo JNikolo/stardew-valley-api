@@ -384,7 +384,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  Character: 'Character'
+  Character: 'Character',
+  Relationship: 'Relationship',
+  CharacterSchedule: 'CharacterSchedule'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "character"
+    modelProps: "character" | "relationship" | "characterSchedule"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +480,154 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Relationship: {
+      payload: Prisma.$RelationshipPayload<ExtArgs>
+      fields: Prisma.RelationshipFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RelationshipFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RelationshipFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>
+        }
+        findFirst: {
+          args: Prisma.RelationshipFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RelationshipFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>
+        }
+        findMany: {
+          args: Prisma.RelationshipFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>[]
+        }
+        create: {
+          args: Prisma.RelationshipCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>
+        }
+        createMany: {
+          args: Prisma.RelationshipCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.RelationshipCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>[]
+        }
+        delete: {
+          args: Prisma.RelationshipDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>
+        }
+        update: {
+          args: Prisma.RelationshipUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>
+        }
+        deleteMany: {
+          args: Prisma.RelationshipDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RelationshipUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.RelationshipUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>[]
+        }
+        upsert: {
+          args: Prisma.RelationshipUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RelationshipPayload>
+        }
+        aggregate: {
+          args: Prisma.RelationshipAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRelationship>
+        }
+        groupBy: {
+          args: Prisma.RelationshipGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RelationshipGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RelationshipCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RelationshipCountAggregateOutputType> | number
+        }
+      }
+    }
+    CharacterSchedule: {
+      payload: Prisma.$CharacterSchedulePayload<ExtArgs>
+      fields: Prisma.CharacterScheduleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CharacterScheduleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CharacterScheduleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>
+        }
+        findFirst: {
+          args: Prisma.CharacterScheduleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CharacterScheduleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>
+        }
+        findMany: {
+          args: Prisma.CharacterScheduleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>[]
+        }
+        create: {
+          args: Prisma.CharacterScheduleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>
+        }
+        createMany: {
+          args: Prisma.CharacterScheduleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CharacterScheduleCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>[]
+        }
+        delete: {
+          args: Prisma.CharacterScheduleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>
+        }
+        update: {
+          args: Prisma.CharacterScheduleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>
+        }
+        deleteMany: {
+          args: Prisma.CharacterScheduleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CharacterScheduleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CharacterScheduleUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>[]
+        }
+        upsert: {
+          args: Prisma.CharacterScheduleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CharacterSchedulePayload>
+        }
+        aggregate: {
+          args: Prisma.CharacterScheduleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCharacterSchedule>
+        }
+        groupBy: {
+          args: Prisma.CharacterScheduleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CharacterScheduleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CharacterScheduleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CharacterScheduleCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -521,17 +671,40 @@ export const CharacterScalarFieldEnum = {
   id: 'id',
   name: 'name',
   birthday_season: 'birthday_season',
-  birthday: 'birthday',
+  birthday_day: 'birthday_day',
   lives_in: 'lives_in',
   address: 'address',
   can_marriage: 'can_marriage',
   clinic_visit_season: 'clinic_visit_season',
   clinic_visit_day: 'clinic_visit_day',
   loved_gifts: 'loved_gifts',
-  family: 'family'
+  family: 'family',
+  character_image: 'character_image'
 } as const
 
 export type CharacterScalarFieldEnum = (typeof CharacterScalarFieldEnum)[keyof typeof CharacterScalarFieldEnum]
+
+
+export const RelationshipScalarFieldEnum = {
+  id: 'id',
+  character_id: 'character_id',
+  description: 'description'
+} as const
+
+export type RelationshipScalarFieldEnum = (typeof RelationshipScalarFieldEnum)[keyof typeof RelationshipScalarFieldEnum]
+
+
+export const CharacterScheduleScalarFieldEnum = {
+  id: 'id',
+  character_id: 'character_id',
+  season: 'season',
+  isRegular: 'isRegular',
+  time: 'time',
+  location: 'location',
+  specialOcassion: 'specialOcassion'
+} as const
+
+export type CharacterScheduleScalarFieldEnum = (typeof CharacterScheduleScalarFieldEnum)[keyof typeof CharacterScheduleScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -548,6 +721,14 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 
@@ -714,6 +895,8 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   character?: Prisma.CharacterOmit
+  relationship?: Prisma.RelationshipOmit
+  characterSchedule?: Prisma.CharacterScheduleOmit
 }
 
 /* Types for Logging */

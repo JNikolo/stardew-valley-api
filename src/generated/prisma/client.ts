@@ -44,3 +44,13 @@ export { Prisma }
  * 
  */
 export type Character = Prisma.CharacterModel
+/**
+ * Model Relationship
+ * 
+ */
+export type Relationship = Prisma.RelationshipModel
+/**
+ * Model CharacterSchedule
+ * 
+ */
+export type CharacterSchedule = Prisma.CharacterScheduleModel

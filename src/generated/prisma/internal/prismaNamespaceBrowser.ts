@@ -51,7 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Character: 'Character'
+  Character: 'Character',
+  Relationship: 'Relationship',
+  CharacterSchedule: 'CharacterSchedule'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,17 +76,40 @@ export const CharacterScalarFieldEnum = {
   id: 'id',
   name: 'name',
   birthday_season: 'birthday_season',
-  birthday: 'birthday',
+  birthday_day: 'birthday_day',
   lives_in: 'lives_in',
   address: 'address',
   can_marriage: 'can_marriage',
   clinic_visit_season: 'clinic_visit_season',
   clinic_visit_day: 'clinic_visit_day',
   loved_gifts: 'loved_gifts',
-  family: 'family'
+  family: 'family',
+  character_image: 'character_image'
 } as const
 
 export type CharacterScalarFieldEnum = (typeof CharacterScalarFieldEnum)[keyof typeof CharacterScalarFieldEnum]
+
+
+export const RelationshipScalarFieldEnum = {
+  id: 'id',
+  character_id: 'character_id',
+  description: 'description'
+} as const
+
+export type RelationshipScalarFieldEnum = (typeof RelationshipScalarFieldEnum)[keyof typeof RelationshipScalarFieldEnum]
+
+
+export const CharacterScheduleScalarFieldEnum = {
+  id: 'id',
+  character_id: 'character_id',
+  season: 'season',
+  isRegular: 'isRegular',
+  time: 'time',
+  location: 'location',
+  specialOcassion: 'specialOcassion'
+} as const
+
+export type CharacterScheduleScalarFieldEnum = (typeof CharacterScheduleScalarFieldEnum)[keyof typeof CharacterScheduleScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -101,4 +126,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

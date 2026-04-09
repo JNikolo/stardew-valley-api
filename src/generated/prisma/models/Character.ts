@@ -28,11 +28,13 @@ export type AggregateCharacter = {
 
 export type CharacterAvgAggregateOutputType = {
   id: number | null
+  birthday_day: number | null
   clinic_visit_day: number | null
 }
 
 export type CharacterSumAggregateOutputType = {
   id: number | null
+  birthday_day: number | null
   clinic_visit_day: number | null
 }
 
@@ -40,31 +42,33 @@ export type CharacterMinAggregateOutputType = {
   id: number | null
   name: string | null
   birthday_season: $Enums.Season | null
-  birthday: string | null
+  birthday_day: number | null
   lives_in: string | null
   address: string | null
   can_marriage: boolean | null
   clinic_visit_season: $Enums.Season | null
   clinic_visit_day: number | null
+  character_image: string | null
 }
 
 export type CharacterMaxAggregateOutputType = {
   id: number | null
   name: string | null
   birthday_season: $Enums.Season | null
-  birthday: string | null
+  birthday_day: number | null
   lives_in: string | null
   address: string | null
   can_marriage: boolean | null
   clinic_visit_season: $Enums.Season | null
   clinic_visit_day: number | null
+  character_image: string | null
 }
 
 export type CharacterCountAggregateOutputType = {
   id: number
   name: number
   birthday_season: number
-  birthday: number
+  birthday_day: number
   lives_in: number
   address: number
   can_marriage: number
@@ -72,17 +76,20 @@ export type CharacterCountAggregateOutputType = {
   clinic_visit_day: number
   loved_gifts: number
   family: number
+  character_image: number
   _all: number
 }
 
 
 export type CharacterAvgAggregateInputType = {
   id?: true
+  birthday_day?: true
   clinic_visit_day?: true
 }
 
 export type CharacterSumAggregateInputType = {
   id?: true
+  birthday_day?: true
   clinic_visit_day?: true
 }
 
@@ -90,31 +97,33 @@ export type CharacterMinAggregateInputType = {
   id?: true
   name?: true
   birthday_season?: true
-  birthday?: true
+  birthday_day?: true
   lives_in?: true
   address?: true
   can_marriage?: true
   clinic_visit_season?: true
   clinic_visit_day?: true
+  character_image?: true
 }
 
 export type CharacterMaxAggregateInputType = {
   id?: true
   name?: true
   birthday_season?: true
-  birthday?: true
+  birthday_day?: true
   lives_in?: true
   address?: true
   can_marriage?: true
   clinic_visit_season?: true
   clinic_visit_day?: true
+  character_image?: true
 }
 
 export type CharacterCountAggregateInputType = {
   id?: true
   name?: true
   birthday_season?: true
-  birthday?: true
+  birthday_day?: true
   lives_in?: true
   address?: true
   can_marriage?: true
@@ -122,6 +131,7 @@ export type CharacterCountAggregateInputType = {
   clinic_visit_day?: true
   loved_gifts?: true
   family?: true
+  character_image?: true
   _all?: true
 }
 
@@ -215,7 +225,7 @@ export type CharacterGroupByOutputType = {
   id: number
   name: string
   birthday_season: $Enums.Season
-  birthday: string
+  birthday_day: number
   lives_in: string
   address: string
   can_marriage: boolean
@@ -223,6 +233,7 @@ export type CharacterGroupByOutputType = {
   clinic_visit_day: number
   loved_gifts: string[]
   family: string[]
+  character_image: string
   _count: CharacterCountAggregateOutputType | null
   _avg: CharacterAvgAggregateOutputType | null
   _sum: CharacterSumAggregateOutputType | null
@@ -252,7 +263,7 @@ export type CharacterWhereInput = {
   id?: Prisma.IntFilter<"Character"> | number
   name?: Prisma.StringFilter<"Character"> | string
   birthday_season?: Prisma.EnumSeasonFilter<"Character"> | $Enums.Season
-  birthday?: Prisma.StringFilter<"Character"> | string
+  birthday_day?: Prisma.IntFilter<"Character"> | number
   lives_in?: Prisma.StringFilter<"Character"> | string
   address?: Prisma.StringFilter<"Character"> | string
   can_marriage?: Prisma.BoolFilter<"Character"> | boolean
@@ -260,13 +271,16 @@ export type CharacterWhereInput = {
   clinic_visit_day?: Prisma.IntFilter<"Character"> | number
   loved_gifts?: Prisma.StringNullableListFilter<"Character">
   family?: Prisma.StringNullableListFilter<"Character">
+  character_image?: Prisma.StringFilter<"Character"> | string
+  relationships?: Prisma.RelationshipListRelationFilter
+  schedule?: Prisma.CharacterScheduleListRelationFilter
 }
 
 export type CharacterOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   birthday_season?: Prisma.SortOrder
-  birthday?: Prisma.SortOrder
+  birthday_day?: Prisma.SortOrder
   lives_in?: Prisma.SortOrder
   address?: Prisma.SortOrder
   can_marriage?: Prisma.SortOrder
@@ -274,6 +288,9 @@ export type CharacterOrderByWithRelationInput = {
   clinic_visit_day?: Prisma.SortOrder
   loved_gifts?: Prisma.SortOrder
   family?: Prisma.SortOrder
+  character_image?: Prisma.SortOrder
+  relationships?: Prisma.RelationshipOrderByRelationAggregateInput
+  schedule?: Prisma.CharacterScheduleOrderByRelationAggregateInput
 }
 
 export type CharacterWhereUniqueInput = Prisma.AtLeast<{
@@ -283,7 +300,7 @@ export type CharacterWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CharacterWhereInput | Prisma.CharacterWhereInput[]
   name?: Prisma.StringFilter<"Character"> | string
   birthday_season?: Prisma.EnumSeasonFilter<"Character"> | $Enums.Season
-  birthday?: Prisma.StringFilter<"Character"> | string
+  birthday_day?: Prisma.IntFilter<"Character"> | number
   lives_in?: Prisma.StringFilter<"Character"> | string
   address?: Prisma.StringFilter<"Character"> | string
   can_marriage?: Prisma.BoolFilter<"Character"> | boolean
@@ -291,13 +308,16 @@ export type CharacterWhereUniqueInput = Prisma.AtLeast<{
   clinic_visit_day?: Prisma.IntFilter<"Character"> | number
   loved_gifts?: Prisma.StringNullableListFilter<"Character">
   family?: Prisma.StringNullableListFilter<"Character">
+  character_image?: Prisma.StringFilter<"Character"> | string
+  relationships?: Prisma.RelationshipListRelationFilter
+  schedule?: Prisma.CharacterScheduleListRelationFilter
 }, "id">
 
 export type CharacterOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   birthday_season?: Prisma.SortOrder
-  birthday?: Prisma.SortOrder
+  birthday_day?: Prisma.SortOrder
   lives_in?: Prisma.SortOrder
   address?: Prisma.SortOrder
   can_marriage?: Prisma.SortOrder
@@ -305,6 +325,7 @@ export type CharacterOrderByWithAggregationInput = {
   clinic_visit_day?: Prisma.SortOrder
   loved_gifts?: Prisma.SortOrder
   family?: Prisma.SortOrder
+  character_image?: Prisma.SortOrder
   _count?: Prisma.CharacterCountOrderByAggregateInput
   _avg?: Prisma.CharacterAvgOrderByAggregateInput
   _max?: Prisma.CharacterMaxOrderByAggregateInput
@@ -319,7 +340,7 @@ export type CharacterScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Character"> | number
   name?: Prisma.StringWithAggregatesFilter<"Character"> | string
   birthday_season?: Prisma.EnumSeasonWithAggregatesFilter<"Character"> | $Enums.Season
-  birthday?: Prisma.StringWithAggregatesFilter<"Character"> | string
+  birthday_day?: Prisma.IntWithAggregatesFilter<"Character"> | number
   lives_in?: Prisma.StringWithAggregatesFilter<"Character"> | string
   address?: Prisma.StringWithAggregatesFilter<"Character"> | string
   can_marriage?: Prisma.BoolWithAggregatesFilter<"Character"> | boolean
@@ -327,12 +348,13 @@ export type CharacterScalarWhereWithAggregatesInput = {
   clinic_visit_day?: Prisma.IntWithAggregatesFilter<"Character"> | number
   loved_gifts?: Prisma.StringNullableListFilter<"Character">
   family?: Prisma.StringNullableListFilter<"Character">
+  character_image?: Prisma.StringWithAggregatesFilter<"Character"> | string
 }
 
 export type CharacterCreateInput = {
   name: string
   birthday_season: $Enums.Season
-  birthday: string
+  birthday_day: number
   lives_in: string
   address: string
   can_marriage: boolean
@@ -340,13 +362,16 @@ export type CharacterCreateInput = {
   clinic_visit_day: number
   loved_gifts?: Prisma.CharacterCreateloved_giftsInput | string[]
   family?: Prisma.CharacterCreatefamilyInput | string[]
+  character_image: string
+  relationships?: Prisma.RelationshipCreateNestedManyWithoutCharacterInput
+  schedule?: Prisma.CharacterScheduleCreateNestedManyWithoutCharacterInput
 }
 
 export type CharacterUncheckedCreateInput = {
   id?: number
   name: string
   birthday_season: $Enums.Season
-  birthday: string
+  birthday_day: number
   lives_in: string
   address: string
   can_marriage: boolean
@@ -354,12 +379,15 @@ export type CharacterUncheckedCreateInput = {
   clinic_visit_day: number
   loved_gifts?: Prisma.CharacterCreateloved_giftsInput | string[]
   family?: Prisma.CharacterCreatefamilyInput | string[]
+  character_image: string
+  relationships?: Prisma.RelationshipUncheckedCreateNestedManyWithoutCharacterInput
+  schedule?: Prisma.CharacterScheduleUncheckedCreateNestedManyWithoutCharacterInput
 }
 
 export type CharacterUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
-  birthday?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
   lives_in?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -367,13 +395,16 @@ export type CharacterUpdateInput = {
   clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
   loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
   family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
+  relationships?: Prisma.RelationshipUpdateManyWithoutCharacterNestedInput
+  schedule?: Prisma.CharacterScheduleUpdateManyWithoutCharacterNestedInput
 }
 
 export type CharacterUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
-  birthday?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
   lives_in?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -381,13 +412,16 @@ export type CharacterUncheckedUpdateInput = {
   clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
   loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
   family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
+  relationships?: Prisma.RelationshipUncheckedUpdateManyWithoutCharacterNestedInput
+  schedule?: Prisma.CharacterScheduleUncheckedUpdateManyWithoutCharacterNestedInput
 }
 
 export type CharacterCreateManyInput = {
   id?: number
   name: string
   birthday_season: $Enums.Season
-  birthday: string
+  birthday_day: number
   lives_in: string
   address: string
   can_marriage: boolean
@@ -395,12 +429,13 @@ export type CharacterCreateManyInput = {
   clinic_visit_day: number
   loved_gifts?: Prisma.CharacterCreateloved_giftsInput | string[]
   family?: Prisma.CharacterCreatefamilyInput | string[]
+  character_image: string
 }
 
 export type CharacterUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
-  birthday?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
   lives_in?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -408,13 +443,14 @@ export type CharacterUpdateManyMutationInput = {
   clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
   loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
   family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type CharacterUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
   birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
-  birthday?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
   lives_in?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -422,6 +458,7 @@ export type CharacterUncheckedUpdateManyInput = {
   clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
   loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
   family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type StringNullableListFilter<$PrismaModel = never> = {
@@ -436,7 +473,7 @@ export type CharacterCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   birthday_season?: Prisma.SortOrder
-  birthday?: Prisma.SortOrder
+  birthday_day?: Prisma.SortOrder
   lives_in?: Prisma.SortOrder
   address?: Prisma.SortOrder
   can_marriage?: Prisma.SortOrder
@@ -444,10 +481,12 @@ export type CharacterCountOrderByAggregateInput = {
   clinic_visit_day?: Prisma.SortOrder
   loved_gifts?: Prisma.SortOrder
   family?: Prisma.SortOrder
+  character_image?: Prisma.SortOrder
 }
 
 export type CharacterAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  birthday_day?: Prisma.SortOrder
   clinic_visit_day?: Prisma.SortOrder
 }
 
@@ -455,29 +494,37 @@ export type CharacterMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   birthday_season?: Prisma.SortOrder
-  birthday?: Prisma.SortOrder
+  birthday_day?: Prisma.SortOrder
   lives_in?: Prisma.SortOrder
   address?: Prisma.SortOrder
   can_marriage?: Prisma.SortOrder
   clinic_visit_season?: Prisma.SortOrder
   clinic_visit_day?: Prisma.SortOrder
+  character_image?: Prisma.SortOrder
 }
 
 export type CharacterMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
   birthday_season?: Prisma.SortOrder
-  birthday?: Prisma.SortOrder
+  birthday_day?: Prisma.SortOrder
   lives_in?: Prisma.SortOrder
   address?: Prisma.SortOrder
   can_marriage?: Prisma.SortOrder
   clinic_visit_season?: Prisma.SortOrder
   clinic_visit_day?: Prisma.SortOrder
+  character_image?: Prisma.SortOrder
 }
 
 export type CharacterSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  birthday_day?: Prisma.SortOrder
   clinic_visit_day?: Prisma.SortOrder
+}
+
+export type CharacterScalarRelationFilter = {
+  is?: Prisma.CharacterWhereInput
+  isNot?: Prisma.CharacterWhereInput
 }
 
 export type CharacterCreateloved_giftsInput = {
@@ -496,16 +543,16 @@ export type EnumSeasonFieldUpdateOperationsInput = {
   set?: $Enums.Season
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 export type CharacterUpdateloved_giftsInput = {
@@ -518,13 +565,235 @@ export type CharacterUpdatefamilyInput = {
   push?: string | string[]
 }
 
+export type CharacterCreateNestedOneWithoutRelationshipsInput = {
+  create?: Prisma.XOR<Prisma.CharacterCreateWithoutRelationshipsInput, Prisma.CharacterUncheckedCreateWithoutRelationshipsInput>
+  connectOrCreate?: Prisma.CharacterCreateOrConnectWithoutRelationshipsInput
+  connect?: Prisma.CharacterWhereUniqueInput
+}
+
+export type CharacterUpdateOneRequiredWithoutRelationshipsNestedInput = {
+  create?: Prisma.XOR<Prisma.CharacterCreateWithoutRelationshipsInput, Prisma.CharacterUncheckedCreateWithoutRelationshipsInput>
+  connectOrCreate?: Prisma.CharacterCreateOrConnectWithoutRelationshipsInput
+  upsert?: Prisma.CharacterUpsertWithoutRelationshipsInput
+  connect?: Prisma.CharacterWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CharacterUpdateToOneWithWhereWithoutRelationshipsInput, Prisma.CharacterUpdateWithoutRelationshipsInput>, Prisma.CharacterUncheckedUpdateWithoutRelationshipsInput>
+}
+
+export type CharacterCreateNestedOneWithoutScheduleInput = {
+  create?: Prisma.XOR<Prisma.CharacterCreateWithoutScheduleInput, Prisma.CharacterUncheckedCreateWithoutScheduleInput>
+  connectOrCreate?: Prisma.CharacterCreateOrConnectWithoutScheduleInput
+  connect?: Prisma.CharacterWhereUniqueInput
+}
+
+export type CharacterUpdateOneRequiredWithoutScheduleNestedInput = {
+  create?: Prisma.XOR<Prisma.CharacterCreateWithoutScheduleInput, Prisma.CharacterUncheckedCreateWithoutScheduleInput>
+  connectOrCreate?: Prisma.CharacterCreateOrConnectWithoutScheduleInput
+  upsert?: Prisma.CharacterUpsertWithoutScheduleInput
+  connect?: Prisma.CharacterWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CharacterUpdateToOneWithWhereWithoutScheduleInput, Prisma.CharacterUpdateWithoutScheduleInput>, Prisma.CharacterUncheckedUpdateWithoutScheduleInput>
+}
+
+export type CharacterCreateWithoutRelationshipsInput = {
+  name: string
+  birthday_season: $Enums.Season
+  birthday_day: number
+  lives_in: string
+  address: string
+  can_marriage: boolean
+  clinic_visit_season: $Enums.Season
+  clinic_visit_day: number
+  loved_gifts?: Prisma.CharacterCreateloved_giftsInput | string[]
+  family?: Prisma.CharacterCreatefamilyInput | string[]
+  character_image: string
+  schedule?: Prisma.CharacterScheduleCreateNestedManyWithoutCharacterInput
+}
+
+export type CharacterUncheckedCreateWithoutRelationshipsInput = {
+  id?: number
+  name: string
+  birthday_season: $Enums.Season
+  birthday_day: number
+  lives_in: string
+  address: string
+  can_marriage: boolean
+  clinic_visit_season: $Enums.Season
+  clinic_visit_day: number
+  loved_gifts?: Prisma.CharacterCreateloved_giftsInput | string[]
+  family?: Prisma.CharacterCreatefamilyInput | string[]
+  character_image: string
+  schedule?: Prisma.CharacterScheduleUncheckedCreateNestedManyWithoutCharacterInput
+}
+
+export type CharacterCreateOrConnectWithoutRelationshipsInput = {
+  where: Prisma.CharacterWhereUniqueInput
+  create: Prisma.XOR<Prisma.CharacterCreateWithoutRelationshipsInput, Prisma.CharacterUncheckedCreateWithoutRelationshipsInput>
+}
+
+export type CharacterUpsertWithoutRelationshipsInput = {
+  update: Prisma.XOR<Prisma.CharacterUpdateWithoutRelationshipsInput, Prisma.CharacterUncheckedUpdateWithoutRelationshipsInput>
+  create: Prisma.XOR<Prisma.CharacterCreateWithoutRelationshipsInput, Prisma.CharacterUncheckedCreateWithoutRelationshipsInput>
+  where?: Prisma.CharacterWhereInput
+}
+
+export type CharacterUpdateToOneWithWhereWithoutRelationshipsInput = {
+  where?: Prisma.CharacterWhereInput
+  data: Prisma.XOR<Prisma.CharacterUpdateWithoutRelationshipsInput, Prisma.CharacterUncheckedUpdateWithoutRelationshipsInput>
+}
+
+export type CharacterUpdateWithoutRelationshipsInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
+  lives_in?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clinic_visit_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
+  loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
+  family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
+  schedule?: Prisma.CharacterScheduleUpdateManyWithoutCharacterNestedInput
+}
+
+export type CharacterUncheckedUpdateWithoutRelationshipsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
+  lives_in?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clinic_visit_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
+  loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
+  family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
+  schedule?: Prisma.CharacterScheduleUncheckedUpdateManyWithoutCharacterNestedInput
+}
+
+export type CharacterCreateWithoutScheduleInput = {
+  name: string
+  birthday_season: $Enums.Season
+  birthday_day: number
+  lives_in: string
+  address: string
+  can_marriage: boolean
+  clinic_visit_season: $Enums.Season
+  clinic_visit_day: number
+  loved_gifts?: Prisma.CharacterCreateloved_giftsInput | string[]
+  family?: Prisma.CharacterCreatefamilyInput | string[]
+  character_image: string
+  relationships?: Prisma.RelationshipCreateNestedManyWithoutCharacterInput
+}
+
+export type CharacterUncheckedCreateWithoutScheduleInput = {
+  id?: number
+  name: string
+  birthday_season: $Enums.Season
+  birthday_day: number
+  lives_in: string
+  address: string
+  can_marriage: boolean
+  clinic_visit_season: $Enums.Season
+  clinic_visit_day: number
+  loved_gifts?: Prisma.CharacterCreateloved_giftsInput | string[]
+  family?: Prisma.CharacterCreatefamilyInput | string[]
+  character_image: string
+  relationships?: Prisma.RelationshipUncheckedCreateNestedManyWithoutCharacterInput
+}
+
+export type CharacterCreateOrConnectWithoutScheduleInput = {
+  where: Prisma.CharacterWhereUniqueInput
+  create: Prisma.XOR<Prisma.CharacterCreateWithoutScheduleInput, Prisma.CharacterUncheckedCreateWithoutScheduleInput>
+}
+
+export type CharacterUpsertWithoutScheduleInput = {
+  update: Prisma.XOR<Prisma.CharacterUpdateWithoutScheduleInput, Prisma.CharacterUncheckedUpdateWithoutScheduleInput>
+  create: Prisma.XOR<Prisma.CharacterCreateWithoutScheduleInput, Prisma.CharacterUncheckedCreateWithoutScheduleInput>
+  where?: Prisma.CharacterWhereInput
+}
+
+export type CharacterUpdateToOneWithWhereWithoutScheduleInput = {
+  where?: Prisma.CharacterWhereInput
+  data: Prisma.XOR<Prisma.CharacterUpdateWithoutScheduleInput, Prisma.CharacterUncheckedUpdateWithoutScheduleInput>
+}
+
+export type CharacterUpdateWithoutScheduleInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
+  lives_in?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clinic_visit_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
+  loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
+  family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
+  relationships?: Prisma.RelationshipUpdateManyWithoutCharacterNestedInput
+}
+
+export type CharacterUncheckedUpdateWithoutScheduleInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  birthday_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  birthday_day?: Prisma.IntFieldUpdateOperationsInput | number
+  lives_in?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.StringFieldUpdateOperationsInput | string
+  can_marriage?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  clinic_visit_season?: Prisma.EnumSeasonFieldUpdateOperationsInput | $Enums.Season
+  clinic_visit_day?: Prisma.IntFieldUpdateOperationsInput | number
+  loved_gifts?: Prisma.CharacterUpdateloved_giftsInput | string[]
+  family?: Prisma.CharacterUpdatefamilyInput | string[]
+  character_image?: Prisma.StringFieldUpdateOperationsInput | string
+  relationships?: Prisma.RelationshipUncheckedUpdateManyWithoutCharacterNestedInput
+}
+
+
+/**
+ * Count Type CharacterCountOutputType
+ */
+
+export type CharacterCountOutputType = {
+  relationships: number
+  schedule: number
+}
+
+export type CharacterCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  relationships?: boolean | CharacterCountOutputTypeCountRelationshipsArgs
+  schedule?: boolean | CharacterCountOutputTypeCountScheduleArgs
+}
+
+/**
+ * CharacterCountOutputType without action
+ */
+export type CharacterCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CharacterCountOutputType
+   */
+  select?: Prisma.CharacterCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * CharacterCountOutputType without action
+ */
+export type CharacterCountOutputTypeCountRelationshipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RelationshipWhereInput
+}
+
+/**
+ * CharacterCountOutputType without action
+ */
+export type CharacterCountOutputTypeCountScheduleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CharacterScheduleWhereInput
+}
 
 
 export type CharacterSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   birthday_season?: boolean
-  birthday?: boolean
+  birthday_day?: boolean
   lives_in?: boolean
   address?: boolean
   can_marriage?: boolean
@@ -532,13 +801,17 @@ export type CharacterSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   clinic_visit_day?: boolean
   loved_gifts?: boolean
   family?: boolean
+  character_image?: boolean
+  relationships?: boolean | Prisma.Character$relationshipsArgs<ExtArgs>
+  schedule?: boolean | Prisma.Character$scheduleArgs<ExtArgs>
+  _count?: boolean | Prisma.CharacterCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["character"]>
 
 export type CharacterSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   birthday_season?: boolean
-  birthday?: boolean
+  birthday_day?: boolean
   lives_in?: boolean
   address?: boolean
   can_marriage?: boolean
@@ -546,13 +819,14 @@ export type CharacterSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   clinic_visit_day?: boolean
   loved_gifts?: boolean
   family?: boolean
+  character_image?: boolean
 }, ExtArgs["result"]["character"]>
 
 export type CharacterSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
   birthday_season?: boolean
-  birthday?: boolean
+  birthday_day?: boolean
   lives_in?: boolean
   address?: boolean
   can_marriage?: boolean
@@ -560,13 +834,14 @@ export type CharacterSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   clinic_visit_day?: boolean
   loved_gifts?: boolean
   family?: boolean
+  character_image?: boolean
 }, ExtArgs["result"]["character"]>
 
 export type CharacterSelectScalar = {
   id?: boolean
   name?: boolean
   birthday_season?: boolean
-  birthday?: boolean
+  birthday_day?: boolean
   lives_in?: boolean
   address?: boolean
   can_marriage?: boolean
@@ -574,18 +849,29 @@ export type CharacterSelectScalar = {
   clinic_visit_day?: boolean
   loved_gifts?: boolean
   family?: boolean
+  character_image?: boolean
 }
 
-export type CharacterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "birthday_season" | "birthday" | "lives_in" | "address" | "can_marriage" | "clinic_visit_season" | "clinic_visit_day" | "loved_gifts" | "family", ExtArgs["result"]["character"]>
+export type CharacterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "birthday_season" | "birthday_day" | "lives_in" | "address" | "can_marriage" | "clinic_visit_season" | "clinic_visit_day" | "loved_gifts" | "family" | "character_image", ExtArgs["result"]["character"]>
+export type CharacterInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  relationships?: boolean | Prisma.Character$relationshipsArgs<ExtArgs>
+  schedule?: boolean | Prisma.Character$scheduleArgs<ExtArgs>
+  _count?: boolean | Prisma.CharacterCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type CharacterIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type CharacterIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $CharacterPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Character"
-  objects: {}
+  objects: {
+    relationships: Prisma.$RelationshipPayload<ExtArgs>[]
+    schedule: Prisma.$CharacterSchedulePayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
     birthday_season: $Enums.Season
-    birthday: string
+    birthday_day: number
     lives_in: string
     address: string
     can_marriage: boolean
@@ -593,6 +879,7 @@ export type $CharacterPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     clinic_visit_day: number
     loved_gifts: string[]
     family: string[]
+    character_image: string
   }, ExtArgs["result"]["character"]>
   composites: {}
 }
@@ -987,6 +1274,8 @@ readonly fields: CharacterFieldRefs;
  */
 export interface Prisma__CharacterClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  relationships<T extends Prisma.Character$relationshipsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Character$relationshipsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RelationshipPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  schedule<T extends Prisma.Character$scheduleArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Character$scheduleArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CharacterSchedulePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1019,7 +1308,7 @@ export interface CharacterFieldRefs {
   readonly id: Prisma.FieldRef<"Character", 'Int'>
   readonly name: Prisma.FieldRef<"Character", 'String'>
   readonly birthday_season: Prisma.FieldRef<"Character", 'Season'>
-  readonly birthday: Prisma.FieldRef<"Character", 'String'>
+  readonly birthday_day: Prisma.FieldRef<"Character", 'Int'>
   readonly lives_in: Prisma.FieldRef<"Character", 'String'>
   readonly address: Prisma.FieldRef<"Character", 'String'>
   readonly can_marriage: Prisma.FieldRef<"Character", 'Boolean'>
@@ -1027,6 +1316,7 @@ export interface CharacterFieldRefs {
   readonly clinic_visit_day: Prisma.FieldRef<"Character", 'Int'>
   readonly loved_gifts: Prisma.FieldRef<"Character", 'String[]'>
   readonly family: Prisma.FieldRef<"Character", 'String[]'>
+  readonly character_image: Prisma.FieldRef<"Character", 'String'>
 }
     
 
@@ -1043,6 +1333,10 @@ export type CharacterFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Omit specific fields from the Character
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
   /**
    * Filter, which Character to fetch.
    */
@@ -1062,6 +1356,10 @@ export type CharacterFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensi
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
+  /**
    * Filter, which Character to fetch.
    */
   where: Prisma.CharacterWhereUniqueInput
@@ -1079,6 +1377,10 @@ export type CharacterFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Omit specific fields from the Character
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
   /**
    * Filter, which Character to fetch.
    */
@@ -1128,6 +1430,10 @@ export type CharacterFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensio
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
+  /**
    * Filter, which Character to fetch.
    */
   where?: Prisma.CharacterWhereInput
@@ -1175,6 +1481,10 @@ export type CharacterFindManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * Omit specific fields from the Character
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
   /**
    * Filter, which Characters to fetch.
    */
@@ -1224,6 +1534,10 @@ export type CharacterCreateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
+  /**
    * The data needed to create a Character.
    */
   data: Prisma.XOR<Prisma.CharacterCreateInput, Prisma.CharacterUncheckedCreateInput>
@@ -1271,6 +1585,10 @@ export type CharacterUpdateArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the Character
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
   /**
    * The data needed to update a Character.
    */
@@ -1338,6 +1656,10 @@ export type CharacterUpsertArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
+  /**
    * The filter to search for the Character to update in case it exists.
    */
   where: Prisma.CharacterWhereUniqueInput
@@ -1364,6 +1686,10 @@ export type CharacterDeleteArgs<ExtArgs extends runtime.Types.Extensions.Interna
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
+  /**
    * Filter which Character to delete.
    */
   where: Prisma.CharacterWhereUniqueInput
@@ -1384,6 +1710,54 @@ export type CharacterDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
+ * Character.relationships
+ */
+export type Character$relationshipsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Relationship
+   */
+  select?: Prisma.RelationshipSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Relationship
+   */
+  omit?: Prisma.RelationshipOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RelationshipInclude<ExtArgs> | null
+  where?: Prisma.RelationshipWhereInput
+  orderBy?: Prisma.RelationshipOrderByWithRelationInput | Prisma.RelationshipOrderByWithRelationInput[]
+  cursor?: Prisma.RelationshipWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RelationshipScalarFieldEnum | Prisma.RelationshipScalarFieldEnum[]
+}
+
+/**
+ * Character.schedule
+ */
+export type Character$scheduleArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CharacterSchedule
+   */
+  select?: Prisma.CharacterScheduleSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CharacterSchedule
+   */
+  omit?: Prisma.CharacterScheduleOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterScheduleInclude<ExtArgs> | null
+  where?: Prisma.CharacterScheduleWhereInput
+  orderBy?: Prisma.CharacterScheduleOrderByWithRelationInput | Prisma.CharacterScheduleOrderByWithRelationInput[]
+  cursor?: Prisma.CharacterScheduleWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CharacterScheduleScalarFieldEnum | Prisma.CharacterScheduleScalarFieldEnum[]
+}
+
+/**
  * Character without action
  */
 export type CharacterDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1395,4 +1769,8 @@ export type CharacterDefaultArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the Character
    */
   omit?: Prisma.CharacterOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CharacterInclude<ExtArgs> | null
 }

@@ -9,4 +9,6 @@
  * 🟢 You can import this file directly.
  */
 export type * from './models/Character.js'
+export type * from './models/Relationship.js'
+export type * from './models/CharacterSchedule.js'
 export type * from './commonInputTypes.js'
