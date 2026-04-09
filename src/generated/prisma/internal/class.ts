@@ -17,7 +17,7 @@ import type * as Prisma from "./prismaNamespace.js"
 
 const config: runtime.GetPrismaClientConfig = {
   "previewFeatures": [],
-  "clientVersion": "7.7.0",
+  "clientVersion": "7.6.0",
   "engineVersion": "75cbdc1eb7150937890ad5465d861175c6624711",
   "activeProvider": "postgresql",
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Get a free hosted Postgres database in seconds: `npx create-db`\n\ngenerator client {\n  provider     = \"prisma-client\"\n  output       = \"../src/generated/prisma\"\n  moduleFormat = \"cjs\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nmodel Character {\n  id                  Int                 @id @default(autoincrement())\n  name                String\n  birthday_season     Season\n  birthday_day        Int\n  lives_in            String\n  address             String\n  can_marriage        Boolean\n  clinic_visit_season Season\n  clinic_visit_day    Int\n  loved_gifts         String[]\n  family              String[]\n  relationships       Relationship[]\n  schedule            CharacterSchedule[]\n  character_image     String\n}\n\nmodel Relationship {\n  id           Int       @id @default(autoincrement())\n  character_id Int\n  character    Character @relation(fields: [character_id], references: [id])\n  description  String\n}\n\nmodel CharacterSchedule {\n  id              Int       @id @default(autoincrement())\n  character_id    Int\n  character       Character @relation(fields: [character_id], references: [id])\n  season          Season\n  isRegular       Boolean\n  time            String\n  location        String\n  specialOcassion String?\n}\n\nenum Season {\n  Spring\n  Summer\n  Fall\n  Winter\n}\n",

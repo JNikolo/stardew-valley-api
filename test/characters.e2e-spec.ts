@@ -39,7 +39,8 @@ describe('CharactersController (e2e)', () => {
             expect(character).toHaveProperty('id');
             expect(character).toHaveProperty('name');
             expect(character).toHaveProperty('birthday_season');
-            expect(character).toHaveProperty('birthday');
+            expect(character).toHaveProperty('birthday_day');
+            expect(character).toHaveProperty('character_image');
             expect(character).toHaveProperty('lives_in');
             expect(character).toHaveProperty('address');
             expect(character).toHaveProperty('can_marriage');
@@ -70,7 +71,8 @@ describe('CharactersController (e2e)', () => {
           expect(res.body).toHaveProperty('id');
           expect(res.body).toHaveProperty('name');
           expect(res.body).toHaveProperty('birthday_season');
-          expect(res.body).toHaveProperty('birthday');
+          expect(res.body).toHaveProperty('birthday_day');
+          expect(res.body).toHaveProperty('character_image');
           expect(res.body).toHaveProperty('lives_in');
           expect(res.body).toHaveProperty('address');
           expect(res.body).toHaveProperty('can_marriage');

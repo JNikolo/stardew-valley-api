@@ -13,7 +13,7 @@ describe('CharactersService', () => {
     id: 1,
     name: 'Abigail',
     birthday_season: $Enums.Season.Summer,
-    birthday: '13th of Summer',
+    birthday_day: 13,
     lives_in: "Pierre's House",
     address: '1 River Road, Pelican Town',
     can_marriage: true,
@@ -21,13 +21,16 @@ describe('CharactersService', () => {
     clinic_visit_day: 12,
     loved_gifts: ['Golden Pumpkin', 'Pumpkin Soup', 'Ice Cream'],
     family: ['Pierre', 'Caroline', 'Sebastian'],
+    relationships: [],
+    schedule: [],
+    character_image: '',
   };
 
   const mockCharacter2: Character = {
     id: 2,
     name: 'Alex',
     birthday_season: $Enums.Season.Summer,
-    birthday: '14th of Summer',
+    birthday_day: 14,
     lives_in: "Grandpa's Shed",
     address: '2 River Road, Pelican Town',
     can_marriage: true,
@@ -35,6 +38,9 @@ describe('CharactersService', () => {
     clinic_visit_day: 12,
     loved_gifts: ['Ordinary Mushroom', 'Risotto', 'Fried Calamari'],
     family: ['Grandpa'],
+    relationships: [],
+    schedule: [],
+    character_image: '',
   };
 
   const mockCharacters: Character[] = [mockCharacter, mockCharacter2];
